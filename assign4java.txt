@@ -1,0 +1,380 @@
+
+Question 1]
+
+package firstpro;
+class First
+{
+	int num1=10;
+	void disp(int num1)
+	{
+		this.num1=num1;
+		System.out.println("First class member function");
+		System.out.println(num1);
+	}
+	First()
+	{
+		System.out.println("In First Constructor");
+	}
+}
+class Second
+{
+	int num2=20;
+	void disp1(int num2)
+	{
+		this.num2=num2;
+		System.out.println("Second class member function");
+		System.out.println(num2);
+	}
+	Second()
+	{
+		System.out.println("In Second Constructor");
+	}
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+		First f1= new First();
+		f1.disp(10);
+		Second f2= new Second();
+		f2.disp1(20);
+	}
+}
+
+Question 2]
+
+package firstpro;
+class sample
+{
+	static int num1=10;
+	int num2=20;
+	public static void First(sample ref)
+	{
+		System.out.println("In static member function");
+		System.out.println(ref.num1);
+	}
+	void Second()
+	{
+		System.out.println("In non static member function");
+		System.out.println(num2);
+	}
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+	sample s1= new sample();
+	sample.First(s1);
+	s1.Second();
+}
+}
+
+Question 3]
+
+package firstpro;
+class Check
+{
+	int num1 =10;
+	private int num2=20;
+	public int num3 =30;
+	protected int num4=40;
+	public void disp()
+	{
+		System.out.println(num3); //you can just replace the num3 with any other variable it will get your value
+		
+	}
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+		Check c1=new Check();
+		c1.disp();
+		
+	}
+}
+
+Question 4]
+
+package firstpro;
+class base
+{
+	int num1=10;
+	void disp(int num1)
+	{
+		System.out.println(num1);
+	}
+	base(int k)
+	{
+		this.num1=num1;
+		System.out.println("In parents class constructor");
+	}
+}
+class child extends base
+{
+	int num2=20;
+	void disp2()
+	{
+		System.out.println(num2);
+	}
+	child() 
+	{
+		super(10);
+		System.out.println("In Child's Class Constructor");
+	}
+	
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+		child c1=new child();
+		c1.disp(100);
+		c1.disp2();
+	}
+}
+
+Question 5]
+
+package firstpro;
+class base
+{
+	int num1=10;
+	void disp(int num1)
+	{
+		System.out.println(num1);
+	}
+	base(int k)
+	{
+		this.num1=num1;
+		System.out.println("In parents class constructor");
+	}
+}
+class child extends base
+{
+	int num2=20;
+	void disp2()
+	{
+		System.out.println(num2);
+	}
+	child() 
+	{
+		super(10);
+		System.out.println("In Child's Class Constructor");
+	}
+	
+}
+class child_1 extends child
+{
+	int num3=30;
+	void disp3()
+	{
+		System.out.println(num3);
+	}
+	child_1()
+	{
+		System.out.println("In child class of child class constructor");
+	}
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+		child_1 c1=new child_1();
+		c1.disp(100);
+		c1.disp2();
+		c1.disp3();
+	}
+}
+
+Question 6]
+
+package firstpro;
+class base
+{
+	int num1=10;
+	void disp(int num1)
+	{
+		System.out.println(num1);
+	}
+	base(int k)
+	{
+		this.num1=num1;
+		System.out.println("In parents class constructor");
+	}
+}
+class child extends base
+{
+	int num2=20;
+	void disp2()
+	{
+		System.out.println(num2);
+	}
+	child() 
+	{
+		super(10);
+		System.out.println("In Child's Class Constructor");
+	}
+	
+}
+class child_1 extends base
+{
+	int num3=30;
+	void disp3()
+	{
+		System.out.println(num3);
+	}
+	child_1()
+	{
+		super(20);
+		System.out.println("In child class of child class constructor");
+	}
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+		child_1 c1=new child_1();
+		child c2=new child();
+		c1.disp(100); // object of the child_1 can only access its own member function and the parent class member function
+		c2.disp2(); // thats why we created new object of the class child to access its own member function
+		c1.disp3();
+	}
+}
+
+Question 7]
+
+package firstpro;
+class base
+{
+	void disp()
+	{
+		System.out.println("In Parent Class"); //overridden 
+	}
+}
+class child extends base
+{
+	void disp() //overriding 
+	{
+		super.disp(); //To access the base class 
+		System.out.println("In child Class");
+	}
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+		child c1=new child();
+		c1.disp();
+	}
+}
+
+Question 8]
+
+package firstpro;
+class base
+{
+	void disp()
+	{
+		System.out.println("In Parent Class");  
+	}
+}
+class child extends base
+{
+	int num1;
+	void disp(int k) //overloading
+	{
+		num1=k;
+		System.out.println(num1);
+	}
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+		child c1=new child();
+		c1.disp(20);
+	}
+}
+
+Question 9]
+
+package firstpro;
+class shape
+{
+	void draw()
+	{
+		System.out.println("Inside Shape");
+	}
+}
+class Circle extends shape
+{
+	void draw()
+	{
+		System.out.println("Inside Circle");
+	}
+}
+class Polygon extends shape
+{
+	void draw()
+	{
+		System.out.println("Inside Polygon");
+	}
+}
+class Rectangle extends shape
+{
+	void draw()
+	{
+		System.out.println("Inside Rectangle");
+	}
+}
+public class Demo1
+{
+	public static void main(String args[])
+	{
+		shape ref=new Circle();
+		ref.draw();
+	}
+}
+
+Question 10]
+
+package firstpro;
+interface Vehicle
+{
+	void start();
+}
+class TwoWheeler implements Vehicle
+{
+	public void start() {
+		System.out.println("In The TwoWheeler Class");
+		
+	}
+}
+class ThreeWheeler implements Vehicle
+{
+	public void start() {
+	System.out.println("In The ThreeWheeler Class");
+		
+	}
+}
+class FourWheeler implements Vehicle
+{
+	public void start() {
+		System.out.println("In The FourWheeler Class");
+		
+	}
+}
+public class Demo1
+{
+	static void perform(Vehicle ref) 
+	{
+		ref.start();
+	}
+	public static void main(String args[])
+	{
+		perform(new TwoWheeler());
+		perform(new ThreeWheeler());
+		perform(new FourWheeler());
+	}
+}

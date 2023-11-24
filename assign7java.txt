@@ -1,0 +1,537 @@
+Name: mayur nagar
+PRN:0045
+
+Question 1]Abstract Class Assignment 1
+
+package firstpro;
+public abstract class Demo1
+{
+	public void start()
+	{
+		System.out.println("Start The Process");
+	}
+	public abstract double getFree();
+	public abstract void evaluate();
+	static void perform(Demo1 ref)
+	{
+		ref.start(); //late binding
+		ref.getFree(); //late binding
+		ref.evaluate(); //late binding
+	}
+	public static void main(String[] args) {
+		perform(new DACDBDACourse ());
+		perform(new MSCitCourse());
+	}
+}
+class DACDBDACourse extends Demo1
+{
+	public double getFree() {
+		System.out.println("getFree In DBDADACCourse");
+		return 0;
+	}
+	public void evaluate() {
+		System.out.println("Evalute In DBDADACCourse");
+	}
+	
+}
+class MSCitCourse extends Demo1
+{
+	public double getFree() {
+		System.out.println("getFree In MASCitCourse");
+		return 0;
+	}
+}
+
+Question 2] Abstract Assignment 2
+
+package firstpro;
+abstract class Beverages
+{
+	public void addMilk()
+	{
+		System.out.println("ADD MILK In Beverages");
+	}
+	abstract void addIngredients();
+}
+class Coffee extends Beverages
+{
+	void addIngredients() {
+		System.out.println("Add The Ingrediants For The Coffee");
+		
+	}
+	public void addMilk()
+	{  
+		System.out.println("ADD MILK In Coffee");
+	}
+}
+class Tea extends Beverages
+{
+	void addIngredients()
+	{
+		System.out.println("Add Ingredients For Tea");
+	}
+	public void addMilk()
+	{
+		System.out.println("ADD MILK In Tea");
+	}
+}
+class FruitJuice extends Beverages
+{
+	void addIngredients()
+	{
+		System.out.println("Add Ingredients In Fruit Juice");
+	}
+	public void addMilk()
+	{
+		System.out.println("ADD MILK In FruitJuice");
+	}		
+}
+public class Demo1
+{
+	public static void main(String[] args) {
+		Beverages b1[]=new Beverages[3];
+		
+		b1[0]=new Coffee();
+		b1[1]=new Tea();
+		b1[2]=new FruitJuice();
+		for(int i=0;i<b1.length;i++)
+		{
+			b1[i].addIngredients();
+			b1[i].addMilk();
+		}
+	}
+}
+
+Question 3]Abstract Assignment 3
+
+package firstpro;
+abstract class Shape
+{
+	abstract void draw(){};
+	void show()
+	{
+		System.out.println("Show In Shape");
+	}
+}
+class Triangle extends Shape
+{
+	void draw()
+	{
+		System.out.println("Draw In Triangle");
+	}
+	void show()
+	{
+		System.out.println("Show In Triangle");
+	}
+}
+class Rectangle extends Shape
+{
+	void draw()
+	{
+		System.out.println("Draw In Recangle");
+	}
+	void show()
+	{
+		System.out.println("Show In Rectangle");
+	}
+}
+class Circle extends Shape
+{
+	void draw()
+	{
+		System.out.println("Draw In Circle");
+	}
+	void show()
+	{
+		System.out.println("Show In Circle");
+	}
+}
+public class Demo1
+{
+	public static void main(String[] args) {
+		Shape s1[]=new Shape[3];
+		s1[0]=new Triangle();
+		s1[1]=new Rectangle();
+		s1[2]=new Circle();
+		for(int i=0;i<s1.length;i++)
+		{
+			s1[i].draw();
+			s1[i].show();
+		}
+	}
+}
+
+Question 4]Abstract Assignment 4
+
+package firstpro;
+
+class UIComponent
+{
+
+}
+class Button extends UIComponent
+{
+	
+}
+class TextField extends UIComponent
+{
+	
+}
+class CheckBox extends UIComponent
+{
+	
+}
+
+abstract class UIComponentCreator
+{
+	public void show(String type)
+	{
+		UIComponent comp=createUIComponent(type);
+		add(comp);
+	}
+	public void add(UIComponent component)
+	{
+		System.out.println("Added the component\t"+component.getClass().getSimpleName());
+	}
+	public abstract UIComponent createUIComponent(String type);
+}
+class WindowsUIComponentCreator extends UIComponentCreator
+{
+	public UIComponent createUIComponent(String type) {
+		switch (type) {
+		case "Button": return new Button();
+		case "TextField": return new TextField();
+		case "CheckBox" : return new CheckBox();
+		default: throw new IllegalArgumentException("Unexpected value: " + type);
+		
+	
+		}//end of the uicomponent method
+	}
+}//end of the class windowsui
+	
+
+class LinuxUIComponentCreator extends UIComponentCreator
+{
+	public UIComponent createUIComponent(String type) {
+		switch (type) {
+		case "Button": return new Button();
+		case "TextField": return new TextField();
+		case "CheckBox" : return new CheckBox();
+		default: throw new IllegalArgumentException("Unexpected value: " + type);
+		
+		}//end of the uicomponent
+	}
+}
+class MacUIComponentCreator extends UIComponentCreator
+{
+	public UIComponent createUIComponent(String type) {
+		switch (type) {
+		case "Button": return new Button();
+		case "TextField": return new TextField();
+		case "CheckBox" : return new CheckBox();
+		default: throw new IllegalArgumentException("Unexpected value: " + type);
+		
+		}//end of the uicomponent
+	}
+	
+}
+
+public class Demo1
+{
+	public static void main(String[] args) {
+		UIComponentCreator w1= new WindowsUIComponentCreator();
+		w1.show("Button");
+		//w1.add(null);
+		LinuxUIComponentCreator l1=new LinuxUIComponentCreator();
+		l1.show("TextField");
+		//l1.add(null);
+		MacUIComponentCreator m1=new MacUIComponentCreator();
+		m1.show("CheckBox");
+		m1.add(null);
+	}
+	
+}
+
+
+Question 5]Command Line Argument
+
+package firstpro;
+public class Demo1
+{
+	public static void main(String[] args) {
+		int sum=0;
+		for(int i=0;i<args.length;i++)
+		{
+			System.out.println(args[i]);
+			sum += Integer.parseInt(args[i]);
+		}
+		
+		
+		
+		System.out.println("Sum :"+sum);
+	}
+}
+
+Question 6]Interface Assignment
+
+package firstpro;
+public interface PizzaIngredientFactory
+{
+	public  <Dough> void createDough();
+	public <Sauce> void createSauce();
+	public <Cheese> void createCheese();
+	public <Pepperoni> void createPepperoni();
+	public <clams> void createClams();
+	public static void main(String args[])
+	{
+		
+		PizzaIngredientFactory p1[]=new PizzaIngredientFactory[2];
+		p1[0]= new  USPIzzaIngredientFactory();
+		p1[1]= new  IndianPizzaIngredientFactory();
+		for(int i=0;i<p1.length;i++)
+		{
+			p1[i].createDough();
+			p1[i].createSauce();
+			p1[i].createCheese();
+			p1[i].createPepperoni();
+			p1[i].createClams();
+		}
+	}
+}
+class USPIzzaIngredientFactory implements PizzaIngredientFactory
+{
+
+	
+	public <Dough> void createDough() {
+	System.out.println("CreateDough In US Pizza Ingredient Factory ");
+	}
+
+	public <Sauce> void createSauce() {
+		System.out.println("CreateSauce In US Pizza Ingredient Factory ");
+	
+	}
+
+	public <Cheese> void createCheese() {
+		System.out.println("CreateCheese In US Pizza Ingredient Factory ");
+
+	}
+
+	public <Pepperoni> void createPepperoni() {
+		System.out.println("CreatePepperoni In US Pizza Ingredient Factory ");
+	
+	}
+
+	public <clams> void createClams() {
+		System.out.println("CreateClams In US Pizza Ingredient Factory ");
+	
+	}
+}
+class IndianPizzaIngredientFactory implements PizzaIngredientFactory
+{
+
+	public <Dough> void createDough() {
+		System.out.println("CreateDough In Indian Pizza Ingredient Factory ");
+
+	}
+
+	public <Sauce> void createSauce() {
+		System.out.println("CreateSauce In Indian Pizza Ingredient Factory ");
+		
+	}
+
+	public <Cheese> void createCheese() {
+		System.out.println("CreateCheese In Indian Pizza Ingredient Factory ");
+	
+	}
+
+	public <Pepperoni> void createPepperoni() {
+		System.out.println("CreatePepperoni In Indian Pizza Ingredient Factory ");
+		
+	}
+
+	public <clams> void createClams() {
+		System.out.println("CreateClams In Indian Pizza Ingredient Factory ");
+	
+	}
+}
+
+Question 7] Upcasting Downcasting Assignment 1
+
+package firstpro;
+public class Course
+{
+	public void start()
+	{
+		System.out.println("Course Start");
+	}
+	public void stop()
+	{
+		System.out.println("Course Stop");
+	}
+	public static void main(String[] args) {
+		Course c[]=new Course[3];
+		c[0]=new DBDADACCourse(); //Upcasting
+		c[1]=new MSCit(); //Upcasting
+		c[2]=new Basic(); //Upcasting
+		for(int i=0;i<c.length;i++)
+		{
+			c[i].start();
+			if(c[i] instanceof DBDADACCourse )
+			{
+				DBDADACCourse d1=(DBDADACCourse)c[i]; //Downcasting
+				d1.orientation();
+			}
+			c[i].stop();
+		}
+		
+	}
+}
+class DBDADACCourse extends Course
+{
+	public void start()
+	{
+		System.out.println("DBDADAC Course Start");
+	}
+	public void stop()
+	{
+		System.out.println("DBDADAC Course Stop");		
+	}
+	public void orientation()
+	{
+		System.out.println("DBDADAC Orientation");		
+	}
+}
+class MSCit extends Course
+{
+	public void start()
+	{
+		System.out.println("MSCIT Course Start");		
+	}
+	public void stop()
+	{
+		System.out.println("MSCIT Course Stop");		
+	}
+}
+class Basic extends Course
+{
+	public void start()
+	{
+		System.out.println("Basic Course Start");		
+	}
+	public void stop()
+	{
+		System.out.println("Basic Course Stop");		
+	}
+}
+class CourseDemo
+{
+	
+}
+
+Question 8]Upcasting Downcasting Assignment 2
+
+package firstpro;
+interface Course
+{
+	void start();
+	void stop();
+}
+class DACDBDACourse implements Course
+{
+
+	@Override
+	public void start() {
+		System.out.println("DACDBDACourse Start");
+		
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("DACDBDACourse Stop");
+
+		
+	}
+	public void orientation()
+	{
+		System.out.println("DACDBDACourse Orientation");
+
+	}
+}
+class MSCit implements Course
+{
+
+	@Override
+	public void start() {
+		System.out.println("MSCIT Course Start");
+
+		
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("MSCIT Stop");
+
+		
+	}
+	
+}
+class Basic implements Course
+{
+
+	@Override
+	public void start() {
+		System.out.println("Basic Course Start");
+
+		
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("Basic Course Stop");
+
+		
+	}
+	
+}
+public class Demo1
+{
+	static void show(Course ref)
+	{
+		ref.start();
+		if(ref instanceof DACDBDACourse)
+		{
+			DACDBDACourse d1=(DACDBDACourse)ref;
+			d1.orientation();
+		}
+	}
+	public static void main(String[] args) {
+		show(new DACDBDACourse());
+		show(new MSCit());
+		show(new Basic());
+	}
+}
+
+Question 9] Variable Number Of Arguments Assignment
+
+
+package firstpro;
+public class Demo1
+{		
+	    public void disp(int... k) 
+	    {
+	        int sum = 0;
+	        for (int k1 : k) 
+	        {
+	            sum += k1;
+	        }
+	        System.out.println(sum);
+	    }
+		public static void main(String[] args) 
+		{
+			Demo1 d1=new Demo1();
+			d1.disp(10,20);
+		}
+}
+
+
+
